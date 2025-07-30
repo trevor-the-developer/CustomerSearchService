@@ -1,0 +1,16 @@
+{
+  "name": "customer-search-service",
+  "version": "1.0.0",
+  "scripts": {
+    "frontend:dev": "cd frontend && npm run serve",
+    "frontend:build": "cd frontend && npm run build",
+    "frontend:test": "cd frontend && npm run test",
+    "backend:dev": "dotnet run --project CustomerSearchService",
+    "dev": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\"",
+    "build": "npm run frontend:build && dotnet build CustomerSearchService.sln"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "concurrently": "^9.1.0"
+  }
+}

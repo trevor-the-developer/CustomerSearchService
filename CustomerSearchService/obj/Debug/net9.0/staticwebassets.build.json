@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "pMrMiene7IkcmajtsagqeZ+EHpgDtIcgE2g34tUqVSo=",
+  "Source": "CustomerSearchService",
+  "BasePath": "_content/CustomerSearchService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

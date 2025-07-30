@@ -1,0 +1,70 @@
+<div class="app-container">
+  <header class="header">
+    <h1>{{ title }}</h1>
+    <p class="subtitle">Search and find customers quickly and efficiently</p>
+  </header>
+
+  <main class="main-content">
+    <div class="search-section">
+      <div class="search-wrapper">
+        <app-customer-autocomplete
+          placeholder="Search customers by name, address, postcode, or tags..."
+          [minChars]="2"
+          [debounceMs]="300"
+          (customerSelected)="onCustomerSelected($event)"
+          (searchChanged)="onSearchChanged($event)">
+        </app-customer-autocomplete>
+      </div>
+    </div>
+
+    <div class="results-section" *ngIf="selectedCustomer">
+      <div class="customer-card">
+        <div class="card-header">
+          <h2>Selected Customer</h2>
+          <button class="clear-btn" (click)="clearSelection()" type="button">
+            ✕ Clear
+          </button>
+        </div>
+        
+        <div class="customer-info">
+          <div class="info-row">
+            <label>Name:</label>
+            <span class="customer-name">{{ selectedCustomer.name }}</span>
+          </div>
+          
+          <div class="info-row">
+            <label>Address:</label>
+            <span>{{ selectedCustomer.address }}</span>
+          </div>
+          
+          <div class="info-row">
+            <label>Postcode:</label>
+            <span>{{ selectedCustomer.postcode }}</span>
+          </div>
+          
+          <div class="info-row" *ngIf="selectedCustomer.tags.length > 0">
+            <label>Tags:</label>
+            <div class="tags-container">
+              <span class="tag" *ngFor="let tag of selectedCustomer.tags">{{ tag }}</span>
+            </div>
+          </div>
+          
+          <div class="info-row">
+            <label>Customer ID:</label>
+            <span class="customer-id">{{ selectedCustomer.id }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="empty-state" *ngIf="!selectedCustomer">
+      <div class="empty-icon">🔍</div>
+      <h3>Find Your Customer</h3>
+      <p>Start typing in the search box above to find customers by name, address, postcode, or associated tags.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Customer Search Service</p>
+  </footer>
+</div>
